@@ -1,0 +1,196 @@
+1.1: Data Query Language
+	
+   1.List the Name and Designation code of the staff who have joined before Jan 2003 and whose salary range is between 12000 and 25000. 
+		Display the columns with user defined Column headers. Hint: Use As clause along with other operators
+
+SQL> select staff_name AS NAME,design_code AS CODE from staff_master where hiredate < '01-01-2013' AND staff_sal BETWEEN 12000 AND 25000;
+
+              
+NAME                                                     CODE
+-------------------------------------------------- ----------
+Arvind                                                    102
+Shyam                                                     102
+Mohan                                                     102
+Anil                                                      102
+Raviraj                                                   102
+Rahul                                                     102
+
+6 rows selected. 
+
+======================================================
+2. List the staff code, name, and department number of the staff who have experience of 18 or more years and sort them based on their experience. 
+
+SQL> SELECT STAFF_CODE,STAFF_NAME,DEPT_CODE FROM staff_master WHERE EXTRACT(YEAR FROM sysdate)-EXTRACT(YEAR FROM HIREDATE) >=18 ORDER BY HIREDATE;
+
+no rows selected
+
+========================================================
+3.Display the staff details who do not have manager. Hint: Use is null  
+SQL>    SELECT * FROM STAFF_MASTER WHERE MGR_CODE IS NULL;
+
+no rows selected
+
+======================================================
+4.	Display the Book details that were published during the period of 2001 to 2004. 
+
+SQL> select * from book_master WHERE BOOK_PUB_YEAR BETWEEN 2001 AND 2004 
+
+
+ BOOK_CODE BOOK_NAME                                          BOOK_PUB_YEAR BOOK_PUB_AUTHOR                                   
+---------- -------------------------------------------------- ------------- --------------------------------------------------
+  10000003 JAVA Complete Reference                                     2004 H.Schild                                          
+  10000007 Intoduction To Algorithams                                  2001 Cormen                                            
+  10000009 Introduction to O/S                                         2001 Millan                                            
+
+
+Also display book details with Book name having the character ‘&’ anywhere.
+
+SQL> select * from book_master WHERE BOOK_PUB_YEAR BETWEEN 2001 AND 2004 AND BOOK_NAME LIKE '%&%'
+
+no rows selected
+
+==================================================================
+5.	List the names of the staff having ‘_’ character in their name.
+
+SQL> SELECT * FROM staff_master WHERE STAFF_NAME LIKE '%_%';
+
+STAFF_CODE STAFF_NAME                                         DESIGN_CODE  DEPT_CODE STAFF_DO HIREDATE   MGR_CODE  STAFF_SAL STAFF_ADDRESS                                                                                                                                                                                                                                   
+---------- -------------------------------------------------- ----------- ---------- -------- -------- ---------- ---------- ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+    100001 Arvind                                                     102         30 15-01-80 15-01-03     100006      17000 Bangalore                                                                                                                                                                                                                                       
+    100002 Shyam                                                      102         20 18-02-80 17-02-02     100007      20000 Chennai                                                                                                                                                                                                                                         
+    100003 Mohan                                                      102         10 23-03-80 19-01-02     100006      24000 Mumbai                                                                                                                                                                                                                                          
+    100004 Anil                                                       102         20 22-04-77 11-03-01     100006      20000 Hyderabad                                                                                                                                                                                                                                       
+    100005 John                                                       106         10 22-05-76 21-01-01     100007      32000 Bangalore                                                                                                                                                                                                                                       
+    100006 Allen                                                      103         30 22-01-80 23-04-01     100005      42000 Chennai                                                                                                                                                                                                                                         
+    100007 Smith                                                      103         20 19-07-73 12-03-02     100005      62000 Mumbai                                                                                                                                                                                                                                          
+    100008 Raviraj                                                    102         40 17-06-80 11-01-03     100006      18000 Bangalore                                                                                                                                                                                                                                       
+    100009 Rahul                                                      102         20 16-01-78 11-12-03     100006      22000 Hyderabad                                                                                                                                                                                                                                       
+    100010 Ram                                                        103         30 17-01-79 17-01-02     100007      32000 Bangalore                                                                                                                                                                                                                                       
+
+10 rows selected. 
+
+==================================================================
+Single Row And Group Functions
+==================================================================
+2.1: Single Row Functions:
+--------------------------------
+1.	Create a query which will display Staff Name, Salary of each staff. Format the salary to be 15 characters long and left padded with ‘$’. 
+SQL> SELECT STAFF_NAME,LPAD(STAFF_SAL,15,'$') FROM staff_master  
+
+STAFF_NAME                                         LPAD(STAFF_SAL,
+-------------------------------------------------- ---------------
+Arvind                                             $$$$$$$$$$17000
+Shyam                                              $$$$$$$$$$20000
+Mohan                                              $$$$$$$$$$24000
+Anil                                               $$$$$$$$$$20000
+John                                               $$$$$$$$$$32000
+Allen                                              $$$$$$$$$$42000
+Smith                                              $$$$$$$$$$62000
+Raviraj                                            $$$$$$$$$$18000
+Rahul                                              $$$$$$$$$$22000
+Ram                                                $$$$$$$$$$32000
+
+10 rows selected. 
+
+-------------------------------------------------------------------------------------------
+2.	Display name and date of birth of students where date of birth must be displayed in the format similar to “January, 12 1981” for those who were born on Saturday or Sunday.
+
+SQL>SELECT STUDENT_NAME AS NAME,TO_CHAR(STUDENT_DOB,'MONTH DD YYYY') AS DOB FROM STUDENT_MASTER 
+WHERE TO_CHAR(STUDENT_DOB,'DAY') LIKE '%SATURDAY%' 
+OR TO_CHAR(STUDENT_DOB,'DAY') LIKE '%SUNDAY%' ;
+
+NAME                                               DOB                                         
+-------------------------------------------------- --------------------------------------------
+Ravi                                               NOVEMBER  01 1981                           
+Raj                                                JANUARY   14 1979                           
+Arvind                                             JANUARY   15 1983                           
+Mehul                                              JANUARY   17 1982                           
+Vijay                                              JANUARY   19 1980                           
+Rajat                                              JANUARY   20 1980                           
+Ramesh                                             DECEMBER  27 1980                           
+Amit Raj                                           SEPTEMBER 28 1980                           
+
+8 rows selected. 
+
+-------------------------------------------------------------------------------------------------
+
+3.	Display each Staff name and number of months they worked for the organization. Label the column as ‘Months Worked’. 
+	Order your result by number of months employed. Also Round the number of months to closest whole number.
+
+SQL> select STAFF_NAME,ROUND(EXTRACT(YEAR FROM sysdate)-EXTRACT(YEAR FROM HIREDATE)) AS "Months_Worked" from STAFF_MASTER 
+ORDER BY HIREDATE;
+
+
+STAFF_NAME                                         Months_Worked
+-------------------------------------------------- -------------
+John                                                          17
+Anil                                                          17
+Allen                                                         17
+Ram                                                           16
+Mohan                                                         16
+Shyam                                                         16
+Smith                                                         16
+Raviraj                                                       15
+Arvind                                                        15
+Rahul                                                         15
+
+10 rows selected. 
+
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+4. List the details of the staff who have joined in first half of December month (irrespective of the year)
+ 
+SELECT * FROM STAFF_MASTER WHERE TO_CHAR(HIREDATE,'DD') BETWEEN 1 AND 15 AND TO_CHAR(HIREDATE,'MONTH') LIKE '%DECEMBER%' ;
+
+
+STAFF_CODE STAFF_NAME                                         DESIGN_CODE  DEPT_CODE STAFF_DO HIREDATE   MGR_CODE  STAFF_SAL STAFF_ADDRESS                                                                                                                                                                                                                                   
+---------- -------------------------------------------------- ----------- ---------- -------- -------- ---------- ---------- ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+    100009 Rahul                                                      102         20 16-01-78 11-12-03     100006      22000 Hyderabad                                                                                                                                                                                                                                       
+
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+5.	Write a query that displays Staff Name, Salary, and Grade of all staff. Grade depends on the following table
+
+SELECT STAFF_NAME,STAFF_SAL,
+	CASE
+	WHEN STAFF_SAL >=50000 THEN 'A'  
+	WHEN STAFF_SAL  >25000 AND  STAFF_SAL<50000 THEN 'B' 
+	WHEN STAFF_SAL  >10000 AND  STAFF_SAL<25000 THEN 'C' 
+	ELSE 'D' 
+	END CASE
+FROM STAFF_MASTER;
+
+
+STAFF_NAME                                          STAFF_SAL C
+-------------------------------------------------- ---------- -
+Arvind                                                  17000 C
+Shyam                                                   20000 C
+Mohan                                                   24000 C
+Anil                                                    20000 C
+John                                                    32000 B
+Allen                                                   42000 B
+Smith                                                   62000 A
+Raviraj                                                 18000 C
+Rahul                                                   22000 C
+Ram                                                     32000 B
+
+10 rows selected. 
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+6. Display the Staff Name, Hire date and day of the week on which staff was hired. Label the column as DAY. Order the result by the day of the week starting with Monday.        Hint :Use to_char with hiredate and formats ‘DY’ and ’D’ 
+ 
+SQL>SELECT STAFF_NAME,TO_CHAR(HIREDATE,'DD MONTH YYYY') AS HIRE_DATE,TO_CHAR(HIREDATE,'DAY')AS DAY FROM STAFFMASTER ORDER BY TO_CHAR(HIREDATE,'DAY') DESC;
+ 
+7. Write a query to find the position of third occurrence of ‘i’ in the given word ‘Mississippi’.  
+ 
+SQL> SELECT INSTR('Mississippi','i',2,3) FROM DUAL;
+ 
+8. Write a query to find the pay date for the month. Pay date is the last Friday of the month. Display the date in the format “Twenty Eighth of January, 2002”. Label the heading as PAY DATE. Hint: use to_char, next_day and last_day functions 
+ 
+SQL>SELECT TO_CHAR(NEXT_DAY(SYSDATE,'TUESDAY'),'DD MONTH ,YYYY') AS DAY FROM DUAL WHERE NEXT_DAY(SYSDATE,'TUESDAY')<LAST_DAY(SYSDATE) ;
+ 
+ 
+9. Display Student code, Name and Dept Name. Display “Electricals” if dept code = 20, “Electronics” if Dept code =30 and “Others” for all other Dept codes in the Dept Name column. Hint : Use Decode   
+ 
+ 
+ 
+
+
