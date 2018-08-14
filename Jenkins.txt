@@ -1,0 +1,258 @@
+OWASP(Security) for application development
+->logout
+->jsp errorpage
+->CORS_OriginHeaderScrutiny
+->OWASP_CSRFGuard_Project/es
+->Password_Management:_Hardcoded_Password
+->/Password_Plaintext_Storage
+->Poor_Logging_Practice
+->Session_Timeout
+->XPATH_Injection_Java
+***************************************
+Google:RAML API,RESt Easy for creating rest full services
+***************************************
+Selinium,junit,cucumber-java:dependencies
+########################
+Google Search: Kerberos
+(JSONToken)
+th2.0
+SAMC
+operSAM
+Fiddler
+########################
+-XMX,_XMS,_XSS->min and max heap size.
+########################
+https://github.com/srinivaskolaparthi
+https://github.com/kolaparthisrini
+
+Git plugin
+Github plugin
+SonarQube
+
+
+skip-cerrtificate plugin
+apache-maven software
+
+steps:---
+---------------
+---------------
+step 1 
+
+ Jenkins homepage-> Manage Jenkins-> Configure System-> Add SonarQube(name-SonarQube5.3,url-http://localhost:9000,token-leave empty)
+->click on Save->
+
+step 2
+
+
+Jenkins homepage-> Manage Jenkins-> Global tool Configuration-> Add Jdk-> uncheck install automatically
+->Name-JDK1.5, Java_home->C:\Program Files\Java\jdk1.8.0_162-> Save
+
+step 3
+
+Jenkins homepage-> Manage Jenkins-> Global tool Configuration-> Add SonarQubeScanner-> uncheck install automatically
+->Name-SonarQube5.x
+
+
+step 4
+
+Jenkins homepage-> Manage Jenkins-> Global tool Configuration-> Add Maven> uncheck install automatically
+->Name-Maven3.x,home- D:\Vikash\Module 3- BDD\Selenium Software\apache-maven-3.3.9-> s
+
+
+Creating a new project in jenkins:
+New item->Enter an project name->select Freshstyle project->ok->in genral->add description
+							      ->build->add executable part
+							      ->add build triggers
+
+
+
+
+*****If 502 error is occured then dowload hpi plugins manually 	
+
+jenkins LDAP(server) integrator plugin
+
+ 
+###############################	
+GIT COMMANDS
+###############################
+git init
+git add *
+git commit -m "MEssage"
+git log
+git status
+git help
+
+
+
+********************************************************************************************
+Adding project to git
+********************************************************************************************
+
+Microsoft Windows [Version 6.1.7601]
+Copyright (c) 2009 Microsoft Corporation.  All rights reserved.
+
+C:\Users\learning>cd D:\Akhil Narendrula\BDD\JenkinsMavenTest
+
+C:\Users\learning>d:
+
+D:\Akhil Narendrula\BDD\JenkinsMavenTest>git init
+Initialized empty Git repository in D:/Akhil Narendrula/BDD/JenkinsMavenTest/.gi
+t/
+
+D:\Akhil Narendrula\BDD\JenkinsMavenTest>git add *
+
+
+
+D:\Akhil Narendrula\BDD\JenkinsMavenTest>git log
+fatal: your current branch 'master' does not have any commits yet
+
+D:\Akhil Narendrula\BDD\JenkinsMavenTest>git commit -m "Commit1"
+[master (root-commit) 747e4d8] Commit1
+ Committer: learning <learning>
+Your name and email address were configured automatically based
+on your username and hostname. Please check that they are accurate.
+You can suppress this message by setting them explicitly. Run the
+following command and follow the instructions in your editor to edit
+your configuration file:
+
+    git config --global --edit
+
+After doing this, you may fix the identity used for this commit with:
+
+    git commit --amend --reset-author
+
+ 13 files changed, 175 insertions(+)
+ create mode 100644 .classpath
+ create mode 100644 .project
+ create mode 100644 .settings/org.eclipse.core.resources.prefs
+ create mode 100644 .settings/org.eclipse.jdt.core.prefs
+ create mode 100644 .settings/org.eclipse.m2e.core.prefs
+ create mode 100644 pom.xml
+ create mode 100644 src/main/java/com/cg/jenkins/JenkinsMavenTest/App.java
+ create mode 100644 src/test/java/com/cg/jenkins/JenkinsMavenTest/AppTest.java
+ create mode 100644 target/classes/META-INF/MANIFEST.MF
+ create mode 100644 target/classes/META-INF/maven/com.cg.jenkins/JenkinsMavenTest/pom.properties
+ create mode 100644 target/classes/META-INF/maven/com.cg.jenkins/JenkinsMavenTest/pom.xml
+ create mode 100644 target/classes/com/cg/jenkins/JenkinsMavenTest/App.class
+ create mode 100644 target/test-classes/com/cg/jenkins/JenkinsMavenTest/AppTest.class
+
+D:\Akhil Narendrula\BDD\JenkinsMavenTest>git log
+commit 747e4d8ad2c338d5471617ace1fee190e503e39e
+Author: learning <learning>
+Date:   Fri Aug 10 11:57:51 2018 +0530
+
+    Commit1
+
+D:\Akhil Narendrula\BDD\JenkinsMavenTest>git status
+On branch master
+Changes not staged for commit:
+  (use "git add <file>..." to update what will be committed)
+  (use "git checkout -- <file>..." to discard changes in working directory)
+
+        modified:   src/main/java/com/cg/jenkins/JenkinsMavenTest/App.java
+        modified:   target/classes/com/cg/jenkins/JenkinsMavenTest/App.class
+
+no changes added to commit (use "git add" and/or "git commit -a")
+
+D:\Akhil Narendrula\BDD\JenkinsMavenTest>git add *
+
+D:\Akhil Narendrula\BDD\JenkinsMavenTest>git log
+commit 747e4d8ad2c338d5471617ace1fee190e503e39e
+Author: learning <learning>
+Date:   Fri Aug 10 11:57:51 2018 +0530
+
+    Commit1
+
+D:\Akhil Narendrula\BDD\JenkinsMavenTest>git commit -m "Commit2"
+[master d4efdbc] Commit2
+ Committer: learning <learning>
+Your name and email address were configured automatically based
+on your username and hostname. Please check that they are accurate.
+You can suppress this message by setting them explicitly. Run the
+following command and follow the instructions in your editor to edit
+your configuration file:
+
+    git config --global --edit
+
+After doing this, you may fix the identity used for this commit with:
+
+    git commit --amend --reset-author
+
+ 2 files changed, 1 insertion(+), 1 deletion(-)
+
+D:\Akhil Narendrula\BDD\JenkinsMavenTest>git status
+On branch master
+nothing to commit, working tree clean
+
+D:\Akhil Narendrula\BDD\JenkinsMavenTest>git log
+commit d4efdbcd76110f856fcb09ee4888959b186e08da
+Author: learning <learning>
+Date:   Fri Aug 10 12:02:12 2018 +0530
+
+    Commit2
+
+commit 747e4d8ad2c338d5471617ace1fee190e503e39e
+Author: learning <learning>
+Date:   Fri Aug 10 11:57:51 2018 +0530
+
+    Commit1
+
+D:\Akhil Narendrula\BDD\JenkinsMavenTest>git help
+
+D:\Akhil Narendrula\BDD\JenkinsMavenTest>git help
+usage: git [--version] [--help] [-C <path>] [-c name=value]
+           [--exec-path[=<path>]] [--html-path] [--man-path] [--info-path]
+           [-p | --paginate | --no-pager] [--no-replace-objects] [--bare]
+           [--git-dir=<path>] [--work-tree=<path>] [--namespace=<name>]
+           <command> [<args>]
+
+These are common Git commands used in various situations:
+
+start a working area (see also: git help tutorial)
+   clone      Clone a repository into a new directory
+   init       Create an empty Git repository or reinitialize an existing one
+
+work on the current change (see also: git help everyday)
+   add        Add file contents to the index
+   mv         Move or rename a file, a directory, or a symlink
+   reset      Reset current HEAD to the specified state
+   rm         Remove files from the working tree and from the index
+
+examine the history and state (see also: git help revisions)
+   bisect     Use binary search to find the commit that introduced a bug
+   grep       Print lines matching a pattern
+   log        Show commit logs
+   show       Show various types of objects
+   status     Show the working tree status
+
+grow, mark and tweak your common history
+   branch     List, create, or delete branches
+   checkout   Switch branches or restore working tree files
+   commit     Record changes to the repository
+   diff       Show changes between commits, commit and working tree, etc
+   merge      Join two or more development histories together
+   rebase     Reapply commits on top of another base tip
+   tag        Create, list, delete or verify a tag object signed with GPG
+
+collaborate (see also: git help workflows)
+   fetch      Download objects and refs from another repository
+   pull       Fetch from and integrate with another repository or a local branch
+   push       Update remote refs along with associated objects
+
+'git help -a' and 'git help -g' list available subcommands and some
+concept guides. See 'git help <command>' or 'git help <concept>'
+to read about a specific subcommand or concept.
+
+D:\Akhil Narendrula\BDD\JenkinsMavenTest>
+
+###################################################
+Adding SonarQube
+###################################################
+Goto SonarQube->bin->windowsx86 64\32->goto browser ->click http://localhost:9000 then you will come up with SonarQube web page
+
+
+
+
+
+
+					     
